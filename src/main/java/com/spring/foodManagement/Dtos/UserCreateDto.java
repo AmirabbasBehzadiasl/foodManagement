@@ -5,6 +5,10 @@ import jakarta.validation.constraints.*;
 
 public class UserCreateDto {
 
+    @NotBlank(message = "you should enter username")
+    @Size(min = 2, max = 50, message = "Username must be between 2 and 50 characters")
+    private String userName;
+
     @NotBlank(message = "you should enter name")
     @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters")
     @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Name must contain only letters and spaces")
@@ -40,5 +44,13 @@ public class UserCreateDto {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

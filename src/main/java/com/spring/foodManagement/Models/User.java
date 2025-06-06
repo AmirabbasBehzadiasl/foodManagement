@@ -8,8 +8,11 @@ import java.util.List;
 @Entity
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false , unique = true)
+    private String userName;
 
     @Column(nullable = false)
     private String name;
@@ -83,5 +86,13 @@ public class User {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
