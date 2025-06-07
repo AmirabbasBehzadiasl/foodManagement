@@ -37,14 +37,10 @@ public class UserService {
     }
 
     public UserResponseDto addUser(UserCreateDto userDto) {
-        System.err.println(userDto+"in ser 1");
         userRepository.findByUserName(userDto.getUserName())
                 .ifPresent(existing -> {
                     throw new AlreadyExistException("User with userName " + userDto.getUserName() + " already exists");
                 });
-        System.err.println(userDto+"in ser 2");
-        System.err.println(userDto.getEmail());
-        System.err.println(userDto.getUserName());
         return userMapper.toDto(userRepository.save(userMapper.toModel(userDto)));
     }
 

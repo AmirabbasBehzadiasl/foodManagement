@@ -9,7 +9,7 @@ public class ReviewCreateDto {
     private String comment;
 
     @Min(value = 1, message = "Rating must be at least 1")
-    @Max(value = 5, message = "Rating must be at most 5")
+    @Max(value = 10, message = "Rating must be at most 10")
     private int rating;
 
     @NotNull(message = "Dish ID is required")

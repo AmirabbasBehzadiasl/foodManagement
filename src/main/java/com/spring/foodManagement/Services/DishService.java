@@ -52,7 +52,7 @@ public class DishService {
         Dish dish = dishMapper.toModel(dto);
         dish.setCategory(categoryRepository.findById(dto.getCategoryId())
                 .orElseThrow(() -> new NotFoundException("Category not found with ID: " + dto.getCategoryId())));
-        dish.setChef(userRepository.findById(dto.getChefId())
+        dish.setChef(userRepository.findChefById(dto.getChefId())
                 .orElseThrow(() -> new NotFoundException("Chef not found with ID: " + dto.getChefId())));
 
         return dishMapper.toDto(dishRepository.save(dish));
@@ -65,7 +65,7 @@ public class DishService {
         dishMapper.updateFromDto(dto, existingDish);
         existingDish.setCategory(categoryRepository.findById(dto.getCategoryId())
                 .orElseThrow(() -> new NotFoundException("Category not found with ID: " + dto.getCategoryId())));
-        existingDish.setChef(userRepository.findById(dto.getChefId())
+        existingDish.setChef(userRepository.findChefById(dto.getChefId())
                 .orElseThrow(() -> new NotFoundException("Chef not found with ID: " + dto.getChefId())));
 
         return dishMapper.toDto(dishRepository.save(existingDish));

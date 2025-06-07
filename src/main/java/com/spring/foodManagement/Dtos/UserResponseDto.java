@@ -3,6 +3,7 @@ package com.spring.foodManagement.Dtos;
 import com.spring.foodManagement.Enums.Role;
 
 public class UserResponseDto {
+    private Long id;
     private String userName;
     private String name;
     private String email;
@@ -38,5 +39,13 @@ public class UserResponseDto {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
