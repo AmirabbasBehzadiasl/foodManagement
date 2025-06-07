@@ -13,6 +13,7 @@ public interface OrderItemMapper {
     OrderItem toModel(OrderItemCreateDto dto);
 
     @Mapping(source = "dish.id", target = "dishId")
+    @Mapping(source = "dish.price" , target = "price")
     OrderItemResponseDto toDto(OrderItem orderItem);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
