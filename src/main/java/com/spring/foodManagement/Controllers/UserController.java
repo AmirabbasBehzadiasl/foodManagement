@@ -42,8 +42,7 @@ public class UserController {
 
     @PutMapping("/updateUserByUserName")
     public ResponseEntity<?> updateUserByUserName(@RequestParam String username, @Valid @RequestBody UserCreateDto userDto) {
-        userService.updateUserByUserName(username, userDto);
-        return ResponseEntity.ok(userDto);
+        return ResponseEntity.ok(userService.updateUserByUserName(username, userDto));
     }
 
     @DeleteMapping("/deleteUserByUserName")

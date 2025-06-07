@@ -2,7 +2,6 @@ package com.spring.foodManagement.Mapper;
 
 import com.spring.foodManagement.Dtos.DishCreateDto;
 import com.spring.foodManagement.Dtos.DishResponseDto;
-import com.spring.foodManagement.Models.Category;
 import com.spring.foodManagement.Models.Dish;
 import org.mapstruct.*;
 

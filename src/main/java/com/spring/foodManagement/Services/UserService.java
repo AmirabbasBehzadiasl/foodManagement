@@ -48,18 +48,16 @@ public class UserService {
         return userMapper.toDto(userRepository.save(userMapper.toModel(userDto)));
     }
 
-    public void updateUserByUserName(String userName, UserCreateDto userDto) {
-        userRepository.findByUserName(userName)
-                .ifPresentOrElse(
-                        existingUser -> {
-                            userMapper.updateUserFromDto(userDto, existingUser);
-                            userRepository.save(existingUser);
-                        },
-                        () -> {
-                            throw new NotFoundException("User with userName " + userName + " not found");
-                        }
-                );
+    public UserResponseDto updateUserByUserName(String userName, UserCreateDto userDto) {
+        User existingUser = userRepository.findByUserName(userName)
+                .orElseThrow(() -> new NotFoundException("User with userName " + userName + " not found"));
+
+        userMapper.updateUserFromDto(userDto, existingUser);
+        User updatedUser = userRepository.save(existingUser);
+
+        return userMapper.toDto(updatedUser);
     }
+
 
     public void deleteUserByUserName(String userName) {
         User user = userRepository.findByUserName(userName)
